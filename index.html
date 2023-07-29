@@ -1,198 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <link rel="stylesheet" href="lib/leaflet.measure.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="lib/MarkerCluster.css">
-    <link rel="stylesheet" href="lib/MarkerCluster.Default.css">
-
-    
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="lib/leaflet.browser.print.min.js"></script>
-    <script src="lib/leaflet.measure.js"></script>
-    <script src="lib/data.js"></script>
-    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="lib/leaflet.markercluster.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="lib/leaflet.measure.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="lib/MarkerCluster.css" />
+    <link rel="stylesheet" href="lib/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="dist/style.css" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      #map {
-        width: 100%;
-        height: 700px;
-      }
-
-      .coor{
-        position: absolute;
-        border: 1px solid black;
-        padding: 5px ;
-        background-color: rgb(52, 7, 213);
-        color: white;
-        bottom: 0;
-        right: 50%;
-        transform: translate(50%);
-      }
-
-      .full-screen{
-        padding:5px;
-    /* color:  */
-    background-color: #fff;
-    position: absolute;
-    right: 10px;
-    top: 180px
-      }
-
-      .zoom-layer{
-        padding: 5px;
-    background-color: #fff;
-    position: absolute;
-    right: 10px;
-    top: 140px;
-      }
-
-    </style>
   </head>
   <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-light">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" style="color: wheat" href="#"
+              >LEAFLET CONTROL</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: white" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: white" href="#">About</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <div id="map">
-
-      
-
       <!-- Coordinate-->
       <div class="leaflet-control coor">
         <div id="coordinate"></div>
       </div>
-      
-      
 
-       <!-- full-screen -->
+      <!-- full-screen -->
       <div class="leaflet-control full-screen" onclick="fullScreenView()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-fullscreen" viewBox="0 0 16 16">
-          <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          class="bi bi-fullscreen"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"
+          />
         </svg>
       </div>
 
       <!-- zoom to layer  -->
       <div class="leaflet-control zoom-layer">
-        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" />
-            <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+        <svg
+          width="1.5em"
+          height="1.5em"
+          viewBox="0 0 16 16"
+          class="bi bi-house-door"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"
+          />
         </svg>
+      </div>
     </div>
-</div>
-      
-      
-    
   </body>
 </html>
 
-<script>
-  //Add map
-  var map = L.map("map", {
-    zoomControl: false,
-    measureControl: true
-  }).setView([28.3949, 84.124], 7);
-
-  var osm= L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-  }).addTo(map);
-
-  var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
-	maxZoom: 20,
-	
-});
-
-var Stamen_Watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
-
-	subdomains: 'abcd',
-	minZoom: 1,
-	maxZoom: 16,
-	ext: 'jpg'
-});
-
-  // Add marker
-  // map.on("click", function (e) {
-  //   L.marker([e.latlng.lat, e.latlng.lng])
-  //     .addTo(map)
-  //     .bindPopup("latitude " + e.latlng.lat.toString())
-  //     .openPopup();
-  // });
-
-   var single = L.marker([28.3949, 84.124], {
-    opacity: 0.5,
-    draggable: true,
-  })
-    .addTo(map)
-    .bindPopup("Hello dear")
-    .openPopup();
-
-  // Add scale
-  L.control
-    .scale({
-      maxWidth: 100,
-      metric: true,
-    })
-    .addTo(map);
-
-  //Manage Attribution
-  L.control
-    .attribution()
-    .setPrefix((prefix = "adsf"))
-    .addTo(map);
-
-  map.on("mousemove", function (e) {
-    document.getElementById("coordinate").innerHTML =
-      "Lat: " + `${e.latlng.lat}` + " Lng: " + `${e.latlng.lng}`;
-  });
-  
- //Browser Print
-  L.control.browserPrint({position: 'topright', title: 'Print ...'}).addTo(map);
-
-
-//Measure
-  L.control.measure().addTo(map);
-
-  L.Control.geocoder().addTo(map);
-  // GeoJson
-  var marker = L.markerClusterGroup();
-  var geo = L.geoJSON(data);
-  geo.addTo(marker);
-  marker.addTo(map);
-
-
-  //layer control
-  var baseLayers ={
-    "One": osm,
-    "Two": Stadia_AlidadeSmoothDark,
-    "Three": Stamen_Watercolor
-  }
-
-  var overlays ={
-    "Marker": geo,
-    "Single": single
-  }
-  
-  L.control.layers(baseLayers,overlays,{  position: 'topleft' }).addTo(map);
-
-// Zoom to layer
-  $('.zoom-layer').click(function(){
-    map.setView([28.3949, 84.124],7)
-  })
-  
-  var mapId = document.getElementById('map');
-function fullScreenView() {
-    if (document.fullscreenElement) {
-        document.exitFullscreen()
-    } else {
-        mapId.requestFullscreen();
-    }
-}
-  
-  
-</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="lib/leaflet.browser.print.min.js"></script>
+<script src="lib/leaflet.measure.js"></script>
+<script src="lib/data.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+  crossorigin="anonymous"
+></script>
+<script src="lib/leaflet.markercluster.js"></script>
+<script src="dist/main.js"></script>
+<script src="dist/web-GIS.js"></script>
