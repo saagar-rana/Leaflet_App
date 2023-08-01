@@ -1,0 +1,33 @@
+ #map {
+        width: 100%;
+        height: calc(100vh - 56px);
+      }
+
+      .coor{
+        position: absolute;
+        border: 1px solid black;
+        padding: 5px ;
+        background-color: rgb(4, 2, 13);
+        color: white;
+        opacity: 0.5;
+        bottom: 0;
+        right: 50%;
+        transform: translate(50%);
+      }
+
+      .full-screen { 
+        padding:5px;
+    /* color:  */
+    background-color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 180px
+      }
+
+      .zoom-layer{
+        padding: 5px;
+    background-color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 140px;
+      }
