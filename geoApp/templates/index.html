@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{% static './dist/style.css' %}" />
 
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Development</title>
   </head>
   <body>
@@ -103,3 +103,30 @@
 <script src="{% static './lib/leaflet.markercluster.js' %}"></script>
 <script src="{% static './dist/main.js' %}"></script>
 <script src="{% static './dist/web-GIS.js' %}"></script>
+
+
+<script>
+
+  var overlayMaps = {};
+
+  //Shapefile wms
+  {% for s in shp %}
+    var {{ s.name }} = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+        layers: '{{s.name}}',
+        transparent: true,
+        format: 'image/png',
+        
+    })
+    overlayMaps['{{ s.name }}'] = {{ s.name }}
+
+    {% endfor %}
+
+  var overlays = {
+  Marker: geo,
+  Single: single,
+};
+
+L.control.layers(baseLayers,  overlayMaps, { 
+  position: "topleft" 
+}).addTo(map);
+</script>

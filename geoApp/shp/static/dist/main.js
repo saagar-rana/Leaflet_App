@@ -68,12 +68,7 @@ var baseLayers = {
   Three: Stamen_Watercolor,
 };
 
-var overlays = {
-  Marker: geo,
-  Single: single,
-};
 
-L.control.layers(baseLayers, overlays, { position: "topleft" }).addTo(map);
 
 
 //Zoom map
